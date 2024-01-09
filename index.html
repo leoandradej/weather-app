@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/602e9fdfad.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+        <div class="display-content" data-display-content>
+            <header class="header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <form data-form>
+                        <input type="text">
+                    </form>
+                </div>
+                <div class="temp-toggle">
+                    <div class="celsius active">°C</div>
+                    <div class="fahrenheit">°F</div>
+                </div>
+            </header>
+            <div class="location-info">
+                <div class="main-info">
+                    <p class="location">London</p>
+                    <img class="main-icon" src="images/wi-cloudy.svg" alt="">
+                    <p class="condition">Overcast</p>
+                    <p class="temperature">5°</p>
+                </div>
+                <div class="additional-info">
+                    <div class="info">
+                        <p class="info-top">Feels Like</p>
+                        <div class="info-bottom">
+                            <img src="images/wi-thermometer.svg" alt="">
+                            <p class="info-value feels-like">6°</p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="info-top">Humidity</p>
+                        <div class="info-bottom">
+                            <img src="images/wi-humidity.svg" alt="">
+                            <p class="info-value humidity">67%</p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="info-top">Precipitation</p>
+                        <div class="info-bottom">
+                            <img src="images/wi-raindrop.svg" alt="">
+                            <p class="info-value precipitation">6°</p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="info-top">Wind Speed</p>
+                        <div class="info-bottom">
+                            <img src="images/wi-strong-wind.svg" alt="">
+                            <p class="info-value wind-speed">24 KM/H</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="week-day">
+                    <p class="day-name" id="0">SUN</p>
+                    <div class="weather-icon">
+                        <img src="images/wi-cloud.svg" alt="">
+                    </div>
+                    <div class="temp-info">
+                        <p class="min-temp">min 6°</p>
+                        <p class="max-temp">max 15°</p>
+                    </div>
+                </div>
+                <div class="week-day">
+                    <p class="day-name" id="1">MON</p>
+                    <div class="weather-icon">
+                        <img src="images/wi-cloud.svg" alt="">
+                    </div>
+                    <div class="temp-info">
+                        <p class="min-temp"></p>
+                        <p class="max-temp"></p>
+                    </div>
+                </div>
+                <div class="week-day">
+                    <p class="day-name" id="2">TUE</p>
+                    <div class="weather-icon">
+                        <img src="images/wi-rain.svg" alt="">
+                    </div>
+                    <div class="temp-info">
+                        <p class="min-temp"></p>
+                        <p class="max-temp"></p>
+                    </div>
+                </div>
+                <div class="week-day">
+                    <div class="day-name" id="3">WED</div>
+                    <div class="weather-icon">
+                        <img src="images/wi-cloud.svg" alt="">
+                    </div>
+                    <div class="temp-info">
+                        <p class="min-temp"></p>
+                        <p class="max-temp"></p>
+                    </div>
+                </div>
+                <div class="week-day">
+                    <p class="day-name" id="4">THU</p>
+                    <div class="weather-icon">
+                        <img src="images/wi-day-cloudy.svg" alt="">
+                    </div>
+                    <div class="temp-info">
+                        <p class="min-temp"></p>
+                        <p class="max-temp"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

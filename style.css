@@ -1,0 +1,170 @@
+body {
+    font-family: 'Dosis', sans-serif;
+}
+
+img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.main {
+    background-image: url(images/background.jpg);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.display-content {
+    width: 40vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    border-radius: 3rem;
+    background-color: rgba(255, 255, 255, .6);
+}
+
+.header {
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem;
+    border-radius: 2rem;
+    background-color: rgb(255, 255, 255);
+
+}
+
+input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.temp-toggle {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+}
+
+.celsius.active {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, .5);
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+.celsius:hover {
+    color: rgb(54, 153, 215);
+    font-weight: 600;
+}
+
+.fahrenheit.active {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, .5);
+    padding: .5rem;
+    border-radius: 50%;
+    transition: 200ms ease-in-out;
+}
+
+.fahrenheit:hover {
+    color: rgb(54, 153, 215);
+    font-weight: 600;
+}
+
+.location-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.main-info {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.location {
+    font-size: 2.5rem;
+}
+
+.main-info img{
+    width: 8rem;
+    height: 8rem;
+}
+
+.condition {
+    font-size: 1.5rem;
+}
+
+.temperature {
+    font-size: 6rem;
+}
+
+.additional-info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forecast {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    background-color: transparent;
+    backdrop-filter: blur(8rem);
+}
+
+.week-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temp-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
