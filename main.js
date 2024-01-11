@@ -5,10 +5,10 @@ const fahrenheit = document.querySelector(".fahrenheit");
 const city = document.querySelector(".location");
 const weatherCondition = document.querySelector(".condition");
 const temperature = document.querySelector(".temperature");
-const feelsLike = document.querySelector(".feels-like");
-const humidity = document.querySelector(".humidity");
-const precipitation = document.querySelector(".precipitation");
-const windSpeed = document.querySelector(".wind-speed");
+const feelsLike = document.querySelector("[data-feels-like]");
+const humidity = document.querySelector("[data-humidity]");
+const precipitation = document.querySelector("[data-precipitation]");
+const windSpeed = document.querySelector("[data-wind-speed]");
 const weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 const mainIcon = document.querySelector(".main-icon");
 
@@ -55,21 +55,23 @@ async function getData(url) {
         humidity.textContent = `${data.current.humidity}%`;
         precipitation.textContent = `${data.current.precip_mm}mm`;
         windSpeed.textContent = `${data.current.wind_kph} km/h`;
+        mainIcon.src = `images/${data.current.condition.icon.charAt(35)}/${data.current.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
         const dayName = document.querySelectorAll('.day-name');
         dayName.forEach(name => {
             let date = new Date(formatDate(data.forecast.forecastday[name.id].date));
             name.textContent = weekDay[date.getDay()];
-            const minTemp = name.nextElementSibling.nextElementSibling.children[0];
+            name.nextElementSibling.src = `images/${data.forecast.forecastday[name.id].day.condition.icon.charAt(35)}/${data.forecast.forecastday[name.id].day.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
+
             if (celsius.classList.contains('active')) {
-                minTemp.textContent = `min ${data.forecast.forecastday[name.id].day.mintemp_c}°`;
+                name.nextElementSibling.nextElementSibling.children[0].textContent = `min ${data.forecast.forecastday[name.id].day.mintemp_c}°`;
             } else  {
-                minTemp.textContent = `min ${data.forecast.forecastday[name.id].day.mintemp_f}°`;
+                name.nextElementSibling.nextElementSibling.children[0].textContent = `min ${data.forecast.forecastday[name.id].day.mintemp_f}°`;
             }
-            const maxTemp = name.nextElementSibling.nextElementSibling.children[1];
+            
             if (celsius.classList.contains('active')) {
-                maxTemp.textContent = `max ${data.forecast.forecastday[name.id].day.maxtemp_c}°`;
+                name.nextElementSibling.nextElementSibling.children[1].textContent = `max ${data.forecast.forecastday[name.id].day.maxtemp_c}°`;
             } else  {
-                maxTemp.textContent = `max ${data.forecast.forecastday[name.id].day.maxtemp_f}°`;
+                name.nextElementSibling.nextElementSibling.children[1].textContent = `max ${data.forecast.forecastday[name.id].day.maxtemp_f}°`;
             }
         })
         if (response.status === 200) {

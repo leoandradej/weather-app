@@ -19,7 +19,7 @@
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <form data-form>
-                        <input type="text">
+                        <input type="text" placeholder="Search a Location">
                     </form>
                 </div>
                 <div class="temp-toggle">
@@ -30,37 +30,37 @@
             <div class="location-info">
                 <div class="main-info">
                     <p class="location">London</p>
-                    <img class="main-icon" src="images/wi-cloudy.svg" alt="">
+                    <img class="main-icon">
                     <p class="condition">Overcast</p>
                     <p class="temperature">5°</p>
                 </div>
                 <div class="additional-info">
-                    <div class="info">
+                    <div class="info feels-like">
                         <p class="info-top">Feels Like</p>
                         <div class="info-bottom">
-                            <img src="images/wi-thermometer.svg" alt="">
-                            <p class="info-value feels-like">6°</p>
+                            <i class="fa-solid fa-temperature-half"></i>
+                            <p class="info-value" data-feels-like>6°</p>
                         </div>
                     </div>
-                    <div class="info">
-                        <p class="info-top">Humidity</p>
-                        <div class="info-bottom">
-                            <img src="images/wi-humidity.svg" alt="">
-                            <p class="info-value humidity">67%</p>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <p class="info-top">Precipitation</p>
-                        <div class="info-bottom">
-                            <img src="images/wi-raindrop.svg" alt="">
-                            <p class="info-value precipitation">6°</p>
-                        </div>
-                    </div>
-                    <div class="info">
+                    <div class="info wind-speed">
                         <p class="info-top">Wind Speed</p>
                         <div class="info-bottom">
-                            <img src="images/wi-strong-wind.svg" alt="">
-                            <p class="info-value wind-speed">24 KM/H</p>
+                            <i class="fa-solid fa-wind"></i>
+                            <p class="info-value" data-wind-speed>24 KM/H</p>
+                        </div>
+                    </div>
+                    <div class="info precipitation">
+                        <p class="info-top">Precipitation</p>
+                        <div class="info-bottom">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                            <p class="info-value" data-precipitation>6°</p>
+                        </div>
+                    </div>
+                    <div class="info humidity">
+                        <p class="info-top">Humidity</p>
+                        <div class="info-bottom">
+                            <i class="fa-solid fa-droplet"></i>
+                            <p class="info-value" data-humidity>67%</p>
                         </div>
                     </div>
                 </div>
@@ -68,19 +68,15 @@
             <div class="forecast">
                 <div class="week-day">
                     <p class="day-name" id="0">SUN</p>
-                    <div class="weather-icon">
-                        <img src="images/wi-cloud.svg" alt="">
-                    </div>
+                    <img class="weather-icon">
                     <div class="temp-info">
-                        <p class="min-temp">min 6°</p>
-                        <p class="max-temp">max 15°</p>
+                        <p class="min-temp"></p>
+                        <p class="max-temp"></p>
                     </div>
                 </div>
                 <div class="week-day">
                     <p class="day-name" id="1">MON</p>
-                    <div class="weather-icon">
-                        <img src="images/wi-cloud.svg" alt="">
-                    </div>
+                    <img class="weather-icon">
                     <div class="temp-info">
                         <p class="min-temp"></p>
                         <p class="max-temp"></p>
@@ -88,9 +84,7 @@
                 </div>
                 <div class="week-day">
                     <p class="day-name" id="2">TUE</p>
-                    <div class="weather-icon">
-                        <img src="images/wi-rain.svg" alt="">
-                    </div>
+                    <img class="weather-icon">
                     <div class="temp-info">
                         <p class="min-temp"></p>
                         <p class="max-temp"></p>
@@ -98,9 +92,7 @@
                 </div>
                 <div class="week-day">
                     <div class="day-name" id="3">WED</div>
-                    <div class="weather-icon">
-                        <img src="images/wi-cloud.svg" alt="">
-                    </div>
+                    <img class="weather-icon">
                     <div class="temp-info">
                         <p class="min-temp"></p>
                         <p class="max-temp"></p>
@@ -108,9 +100,7 @@
                 </div>
                 <div class="week-day">
                     <p class="day-name" id="4">THU</p>
-                    <div class="weather-icon">
-                        <img src="images/wi-day-cloudy.svg" alt="">
-                    </div>
+                    <img class="weather-icon">
                     <div class="temp-info">
                         <p class="min-temp"></p>
                         <p class="max-temp"></p>

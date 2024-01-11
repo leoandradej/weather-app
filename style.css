@@ -1,13 +1,5 @@
-body {
-    font-family: 'Dosis', sans-serif;
-}
-
-img {
-    width: 2rem;
-    height: 2rem;
-}
-
 .main {
+    font-family: 'Dosis', sans-serif;
     background-image: url(images/background.jpg);
     width: 100vw;
     height: 100vh;
@@ -16,7 +8,7 @@ img {
 }
 
 .display-content {
-    width: 40vw;
+    width: 60vw;
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -27,8 +19,10 @@ img {
     background-color: rgba(255, 255, 255, .6);
 }
 
+/* HEADER */
+
 .header {
-    width: 25rem;
+    width: clamp(15rem, 33vw, 30rem);
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
@@ -85,6 +79,8 @@ input {
     font-weight: 600;
 }
 
+/* MAIN CONTENT */
+
 .location-info {
     width: 100%;
     display: flex;
@@ -93,7 +89,7 @@ input {
 }
 
 .main-info {
-    width: 60%;
+    width: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,31 +98,45 @@ input {
 }
 
 .location {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 5rem);
 }
 
 .main-info img{
-    width: 8rem;
-    height: 8rem;
+    width: clamp(3rem, 20vw, 10rem);
+    height: clamp(3rem, 20vh, 10rem);
 }
 
 .condition {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 2rem);
 }
 
 .temperature {
-    font-size: 6rem;
+    font-size: clamp(4rem, 6vw, 6rem);
 }
 
 .additional-info {
-    width: 40%;
+    width: 16rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
-    font-size: 1.25rem;
+    font-size: clamp(1.2rem, 1.9vw, 1.6rem);
     font-weight: 500;
+}
+
+.feels-like {
+    flex: 1 0;
+}
+
+.humidity {
+    flex: 1 0;
+}
+
+.precipitation {
+    flex: 1 0;
+}
+
+.wind-speed {
+    flex: 1 0;
 }
 
 .info {
@@ -135,36 +145,63 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: .5rem;
 }
 
 .info-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: .5rem;
 }
+
+/* FORECAST */
 
 .forecast {
     width: 100%;
-    height: 6rem;
+    height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
     background-color: transparent;
     backdrop-filter: blur(8rem);
+    font-size: clamp(.7rem, 1.5vw, 1.5rem);
+    gap: .5rem;
 }
 
 .week-day {
+    width: 20%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+}
+
+.day-name {
+    flex: 1 0 100%;
+    text-align: center;
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+
+.weather-icon {
+    flex: 1 0 100%;
+    width: 2rem;
+    height: 2rem;
 }
 
 .temp-info {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     gap: .5rem;
+    text-align: center;
+}
+
+.min-temp {
+    flex: 1 0 50%;
+}
+
+.max-temp {
+    flex: 1 0 50%;
 }
