@@ -14,11 +14,23 @@ const createHeader = () => {
     form.dataset.form = '';
     form.addEventListener('submit', e => {
         e.preventDefault();
-        const formInput = document.querySelector('input');
-        let search = formInput.value.charAt(0).toUpperCase() + formInput.value.slice(1);
-        let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${search}&days=5&aqi=no&alerts=no`;
-        getWeather(url);
-        formInput.value = '';
+
+        const errorMessage = document.querySelector('.error-message');
+        const locationInfo = document.querySelector('.location-info');
+        const additionalInfo = document.querySelector('.additional-info');
+        const forecast = document.querySelector('.forecast');
+        if (errorMessage.classList.contains('active')) {
+            locationInfo.style.display = 'flex';
+            additionalInfo.style.display = 'flex';
+            forecast.style.display = 'flex';
+            errorMessage.classList.remove('active');
+        } else {
+            const formInput = document.querySelector('input');
+            let search = formInput.value.charAt(0).toUpperCase() + formInput.value.slice(1);
+            let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${search}&days=3&aqi=no&alerts=no`;
+            getWeather(url);
+            formInput.value = '';
+        }
     })
 
     const input = document.createElement('input');
@@ -40,7 +52,7 @@ const createHeader = () => {
         if (e.target.classList.contains('active')) return;
         setBtnActive(celsius);
         const city = document.querySelector('.location');
-        let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=5&aqi=no&alerts=no`;
+        let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=3&aqi=no&alerts=no`;
         getWeather(url);
     })
 
@@ -51,7 +63,7 @@ const createHeader = () => {
         if (e.target.classList.contains('active')) return;
         setBtnActive(fahrenheit);
         const city = document.querySelector('.location');
-        let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=5&aqi=no&alerts=no`
+        let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=3&aqi=no&alerts=no`
         getWeather(url);
     })
 
@@ -93,8 +105,19 @@ const createMain = () => {
     additionalInfo.appendChild(createAdditionalInfo('precipitation', 'fa-solid fa-cloud-rain'));
     additionalInfo.appendChild(createAdditionalInfo('humidity', 'fa-solid fa-droplet'));
 
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'error-message';
+    errorMessage.textContent = 'Location Not Found!';
+
+    const errorIcon = document.createElement('img');
+    errorIcon.className = 'error-icon';
+    errorIcon.src = '../dist/images/not-found.png';
+
+    errorMessage.appendChild(errorIcon);
+
     main.appendChild(locationInfo);
     main.appendChild(additionalInfo);
+    main.appendChild(errorMessage);
 
     return main;
 }
@@ -137,8 +160,8 @@ const createForecast = () => {
     forecast.appendChild(createWeekDay(0));
     forecast.appendChild(createWeekDay(1));
     forecast.appendChild(createWeekDay(2));
-    forecast.appendChild(createWeekDay(3));
-    forecast.appendChild(createWeekDay(4));
+    //forecast.appendChild(createWeekDay(3));
+    //forecast.appendChild(createWeekDay(4));
 
     return forecast;
 }
@@ -188,7 +211,7 @@ const initializePage = () => {
     content.appendChild(createMain());
     content.appendChild(createForecast());
     setBtnActive(document.querySelector('.btn'));
-    const url = 'https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=London&days=5&aqi=no&alerts=no';
+    const url = 'http://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=London&days=3&aqi=no&alerts=no';
     getWeather(url);
 }
 

@@ -46,8 +46,16 @@ async function getWeather(url) {
                 }
             })
         } else {
-            alert('LOCATION NOT FOUND!')
+            const locationInfo = document.querySelector('.location-info');
+            const additionalInfo = document.querySelector('.additional-info');
+            const forecast = document.querySelector('.forecast');
+            const errorMessage = document.querySelector('.error-message');
+            locationInfo.style.display = 'none';
+            additionalInfo.style.display = 'none';
+            forecast.style.display = 'none';
+            errorMessage.classList.add('active');
             console.log('Server Error', data.error.message);
+            
         }
     } catch(error) {
         alert('DATA NOT FOUND!');

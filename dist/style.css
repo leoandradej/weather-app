@@ -83,7 +83,7 @@ input {
 }
 
 .location-info {
-    width: 15rem;
+    width: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +109,7 @@ input {
 }
 
 .additional-info {
-    width: 16rem;
+    width: clamp(10rem, 23vw, 17rem);
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -147,6 +147,26 @@ input {
     align-items: center;
     justify-content: center;
     gap: .5rem;
+}
+
+.error-message {
+    width: 80%;
+    height: 80%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.error-icon {
+    width: 15rem;
+    margin-bottom: 5rem;
+}
+
+.error-message.active {
+    display: flex;
 }
 
 /* FORECAST */
