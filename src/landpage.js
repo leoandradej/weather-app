@@ -160,8 +160,6 @@ const createForecast = () => {
     forecast.appendChild(createWeekDay(0));
     forecast.appendChild(createWeekDay(1));
     forecast.appendChild(createWeekDay(2));
-    //forecast.appendChild(createWeekDay(3));
-    //forecast.appendChild(createWeekDay(4));
 
     return forecast;
 }
