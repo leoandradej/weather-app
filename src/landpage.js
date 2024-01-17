@@ -209,7 +209,7 @@ const initializePage = () => {
     content.appendChild(createMain());
     content.appendChild(createForecast());
     setBtnActive(document.querySelector('.btn'));
-    const url = 'http://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=London&days=3&aqi=no&alerts=no';
+    const url = 'https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=London&days=3&aqi=no&alerts=no';
     getWeather(url);
 }
 
