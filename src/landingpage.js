@@ -100,10 +100,20 @@ const createMain = () => {
     const additionalInfo = document.createElement('div');
     additionalInfo.className = 'additional-info';
 
-    additionalInfo.appendChild(createAdditionalInfo('feels like', 'fa-solid fa-temperature-half'));
-    additionalInfo.appendChild(createAdditionalInfo('wind speed', 'fa-solid fa-wind'));
-    additionalInfo.appendChild(createAdditionalInfo('precipitation', 'fa-solid fa-cloud-rain'));
-    additionalInfo.appendChild(createAdditionalInfo('humidity', 'fa-solid fa-droplet'));
+    const additionalInfoTopSection = document.createElement('div');
+    additionalInfoTopSection.className = 'section top';
+
+    additionalInfoTopSection.appendChild(createAdditionalInfo('feels like', 'fa-solid fa-temperature-half'));
+    additionalInfoTopSection.appendChild(createAdditionalInfo('wind speed', 'fa-solid fa-wind'));
+
+    const additionalInfoBottomSection = document.createElement('div');
+    additionalInfoBottomSection.className = 'section bottom';
+
+    additionalInfoBottomSection.appendChild(createAdditionalInfo('precipitation', 'fa-solid fa-cloud-rain'));
+    additionalInfoBottomSection.appendChild(createAdditionalInfo('humidity', 'fa-solid fa-droplet'));
+
+    additionalInfo.appendChild(additionalInfoTopSection);
+    additionalInfo.appendChild(additionalInfoBottomSection);
 
     const errorMessage = document.createElement('div');
     errorMessage.className = 'error-message';

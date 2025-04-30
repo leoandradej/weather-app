@@ -1,3 +1,3 @@
-import initializePage from "./landpage";
+import initializePage from "./landingpage";
 
 initializePage();
