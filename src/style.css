@@ -97,7 +97,7 @@ input {
     font-weight: 600;
 }
 
-.location {
+.weather-location {
     font-size: clamp(1.5rem, 3vw, 5rem);
 }
 
@@ -106,26 +106,32 @@ input {
     height: 5rem;
 }
 
-.condition {
-    font-size: clamp(1rem, 3vw, 2rem);
+.weather-condition {
+    font-size: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem);
 }
 
-.temperature {
+.weather-temperature {
     font-size: clamp(4rem, 6vw, 6rem);
 }
 
 .additional-info {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    font-size: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem);
-    font-weight: 500;
+    font-size: clamp(1rem, 0.9143rem + 0.4286vw, 1.3rem);
     padding: 0 1rem;
 }
 
-.info {
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.weather-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,7 +139,7 @@ input {
     gap: .5rem;
 }
 
-.bottom-info {
+.weather-info-value {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +177,7 @@ input {
     border-bottom-right-radius: 1rem;
     background-color: transparent;
     backdrop-filter: blur(8rem);
-    font-size: clamp(.7rem, 0.3286rem + 1.8571vw, 2rem);
+    font-size: clamp(0.7rem, 0.4714rem + 1.1429vw, 1.5rem);
     gap: .5rem;
 }
 
@@ -207,7 +213,7 @@ input {
     }
 
     .additional-info {
-        width: 30%;
+        width: 40%;
     }
 
     .forecast {

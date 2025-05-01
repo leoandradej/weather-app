@@ -1,14 +1,21 @@
+const weatherIcons = require.context('./images', true, /\.svg$/);
+
 async function getWeather(url) {
     const celsius = document.querySelector(".celsius");
-    const city = document.querySelector(".location");
-    const weatherCondition = document.querySelector(".condition");
-    const temperature = document.querySelector(".temperature");
+    const city = document.querySelector(".weather-location");
+    const weatherCondition = document.querySelector(".weather-condition");
+    const temperature = document.querySelector(".weather-temperature");
     const feelsLike = document.querySelector("[data-feels-like]");
     const humidity = document.querySelector("[data-humidity]");
     const precipitation = document.querySelector("[data-precipitation]");
     const windSpeed = document.querySelector("[data-wind-speed]");
     const weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     const mainIcon = document.querySelector(".main-icon");
+
+    const formatDate = (date) => {
+        const dateObj = new Date(date + 'T00:00:00');
+        return new Intl.DateTimeFormat('en-US').format(dateObj);
+    }
 
     try {
         const response = await fetch(url, { mode: 'cors' });
@@ -26,12 +33,16 @@ async function getWeather(url) {
             humidity.textContent = `${data.current.humidity}%`;
             precipitation.textContent = `${data.current.precip_mm}mm`;
             windSpeed.textContent = `${data.current.wind_kph} km/h`;
-            mainIcon.src = `images/${data.current.condition.icon.charAt(35)}/${data.current.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
+            const mainIconPath = `./${data.current.condition.icon.charAt(35)}/${data.current.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
+            mainIcon.src = weatherIcons(mainIconPath);
+
             const dayName = document.querySelectorAll('.day-name');
             dayName.forEach(name => {
                 let date = new Date(formatDate(data.forecast.forecastday[name.id].date));
                 name.textContent = weekDay[date.getDay()];
-                name.nextElementSibling.src = `images/${data.forecast.forecastday[name.id].day.condition.icon.charAt(35)}/${data.forecast.forecastday[name.id].day.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
+                const forecastIconPath = `./${data.forecast.forecastday[name.id].day.condition.icon.charAt(35)}/${data.forecast.forecastday[name.id].day.condition.text.replace(/ /g, '-').toLowerCase()}.svg`;
+                name.nextElementSibling.src = weatherIcons(forecastIconPath);
+
 
                 if (celsius.classList.contains('active')) {
                     name.nextElementSibling.nextElementSibling.children[0].textContent = `min: ${data.forecast.forecastday[name.id].day.mintemp_c}°`;
@@ -55,17 +66,11 @@ async function getWeather(url) {
             forecast.style.display = 'none';
             errorMessage.classList.add('active');
             console.log('Server Error', data.error.message);
-            
         }
     } catch(error) {
         alert('DATA NOT FOUND!');
         console.log('Fetch Error', error.message);
     }
-}
-
-const formatDate = (date) => {
-    const dateObj = new Date(date + 'T00:00:00');
-    return new Intl.DateTimeFormat('en-US').format(dateObj);
 }
 
 export default getWeather;

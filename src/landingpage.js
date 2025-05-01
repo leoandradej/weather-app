@@ -1,4 +1,5 @@
 import getWeather from "./weather";
+import errorImg from "./images/not-found.png"
 
 const createHeader = () => {
     const header = document.createElement('header');
@@ -51,7 +52,7 @@ const createHeader = () => {
     celsius.addEventListener('click', e => {
         if (e.target.classList.contains('active')) return;
         setBtnActive(celsius);
-        const city = document.querySelector('.location');
+        const city = document.querySelector('.weather-location');
         let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=3&aqi=no&alerts=no`;
         getWeather(url);
     })
@@ -62,7 +63,7 @@ const createHeader = () => {
     fahrenheit.addEventListener('click', e => {
         if (e.target.classList.contains('active')) return;
         setBtnActive(fahrenheit);
-        const city = document.querySelector('.location');
+        const city = document.querySelector('.weather-location');
         let url = `https://api.weatherapi.com/v1/forecast.json?key=dbb41c73f2e14b6783114523240201&q=${city.textContent}&days=3&aqi=no&alerts=no`
         getWeather(url);
     })
@@ -76,44 +77,77 @@ const createHeader = () => {
     return header;
 }
 
+const createAdditionalInfo = (label, iconClass) => {
+    const labelWords = label.split(' ').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    const labelKey = labelWords.join('-').toLowerCase();
+
+    const info = document.createElement('div');
+    info.className = `weather-info ${labelKey}`;
+
+    const topInfo = document.createElement('p');
+    topInfo.className = 'weather-info-label';
+    topInfo.textContent = labelWords.join(' ');
+
+    const bottomInfo = document.createElement('div');
+    bottomInfo.className = 'weather-info-value';
+
+    const icon = document.createElement('i');
+    icon.className = iconClass;
+
+    const value = document.createElement('p');
+    value.className = 'weather-info-data';
+    value.setAttribute(`data-${labelKey}`, '');
+
+    bottomInfo.appendChild(icon);
+    bottomInfo.appendChild(value);
+
+    info.appendChild(topInfo);
+    info.appendChild(bottomInfo);
+
+    return info;
+};
+
 const createMain = () => {
     const main = document.createElement('main');
     main.className = 'main';
-    
+
     const locationInfo = document.createElement('div');
     locationInfo.className = 'location-info';
 
     const location = document.createElement('p');
-    location.className = 'location';
-    const mainIcon = document.createElement('img');
-    mainIcon.className = 'main-icon';
+    location.className = 'weather-location';
+
+    const icon = document.createElement('img');
+    icon.className = 'main-icon';
+
     const condition = document.createElement('p');
-    condition.className = 'condition';
-    const temperature = document.createElement('p');
-    temperature.className = 'temperature';
+    condition.className = 'weather-condition';
+
+    const temp = document.createElement('p');
+    temp.className = 'weather-temperature';
 
     locationInfo.appendChild(location);
-    locationInfo.appendChild(mainIcon);
+    locationInfo.appendChild(icon);
     locationInfo.appendChild(condition);
-    locationInfo.appendChild(temperature);
+    locationInfo.appendChild(temp);
 
     const additionalInfo = document.createElement('div');
     additionalInfo.className = 'additional-info';
 
-    const additionalInfoTopSection = document.createElement('div');
-    additionalInfoTopSection.className = 'section top';
+    const top = document.createElement('div');
+    top.className = 'section top';
+    top.appendChild(createAdditionalInfo('feels like', 'fa-solid fa-temperature-half'));
+    top.appendChild(createAdditionalInfo('wind speed', 'fa-solid fa-wind'));
 
-    additionalInfoTopSection.appendChild(createAdditionalInfo('feels like', 'fa-solid fa-temperature-half'));
-    additionalInfoTopSection.appendChild(createAdditionalInfo('wind speed', 'fa-solid fa-wind'));
+    const bottom = document.createElement('div');
+    bottom.className = 'section bottom';
+    bottom.appendChild(createAdditionalInfo('precipitation', 'fa-solid fa-cloud-rain'));
+    bottom.appendChild(createAdditionalInfo('humidity', 'fa-solid fa-droplet'));
 
-    const additionalInfoBottomSection = document.createElement('div');
-    additionalInfoBottomSection.className = 'section bottom';
-
-    additionalInfoBottomSection.appendChild(createAdditionalInfo('precipitation', 'fa-solid fa-cloud-rain'));
-    additionalInfoBottomSection.appendChild(createAdditionalInfo('humidity', 'fa-solid fa-droplet'));
-
-    additionalInfo.appendChild(additionalInfoTopSection);
-    additionalInfo.appendChild(additionalInfoBottomSection);
+    additionalInfo.appendChild(top);
+    additionalInfo.appendChild(bottom);
 
     const errorMessage = document.createElement('div');
     errorMessage.className = 'error-message';
@@ -121,8 +155,7 @@ const createMain = () => {
 
     const errorIcon = document.createElement('img');
     errorIcon.className = 'error-icon';
-    errorIcon.src = '../dist/images/not-found.png';
-
+    errorIcon.src = errorImg;
     errorMessage.appendChild(errorIcon);
 
     main.appendChild(locationInfo);
@@ -130,38 +163,7 @@ const createMain = () => {
     main.appendChild(errorMessage);
 
     return main;
-}
-
-const createAdditionalInfo = (name, icon) => {
-    const nameWords = name.split(' ');
-    for (let i = 0; i < nameWords.length; i++) {
-        nameWords[i] = nameWords[i][0].toUpperCase() + nameWords[i].substr(1);
-    }
-
-    const info = document.createElement('div');
-    info.className = `info ${nameWords.join('-').toLowerCase()}`;
-
-    const topInfo = document.createElement('p');
-    topInfo.className = 'top-info';
-    topInfo.textContent = nameWords.join(' ');
-
-    const bottomInfo = document.createElement('div');
-    bottomInfo.className = 'bottom-info';
-
-    const infoIcon = document.createElement('i');
-    infoIcon.className = icon;
-    const infoValue = document.createElement('p');
-    infoValue.className = 'info-value';
-    infoValue.setAttribute(`data-${nameWords.join('-').toLowerCase()}`, '');
-
-    bottomInfo.appendChild(infoIcon);
-    bottomInfo.appendChild(infoValue);
-
-    info.appendChild(topInfo);
-    info.appendChild(bottomInfo);
-
-    return info;
-}
+};
 
 const createForecast = () => {
     const forecast = document.createElement('div');
