@@ -11,7 +11,7 @@ A sleek and responsive weather forecast application built with vanilla JavaScrip
 
 ---
 
-## 🚀 Features
+## Features
 
 - Search weather by location (city name)
 - Toggle between Celsius and Fahrenheit
@@ -30,10 +30,3 @@ A sleek and responsive weather forecast application built with vanilla JavaScrip
 - WeatherAPI
 
 ---
-
-## Getting Started
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/leoandradej/weather-app.git
-cd weather-app

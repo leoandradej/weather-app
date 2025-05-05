@@ -1,10 +1,14 @@
 {
+  "homepage": "https://leoandradej.github.io/weather-app/",
   "name": "weather-app",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -16,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/leoandradej/weather-app/issues"
   },
-  "homepage": "https://github.com/leoandradej/weather-app#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "gh-pages": "^6.1.0",
